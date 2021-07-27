@@ -1,6 +1,7 @@
 package com.sulabh.taxestimator.controller;
 
 import com.sulabh.taxestimator.model.Taxation;
+import com.sulabh.taxestimator.service.OffSetCalculator;
 import com.sulabh.taxestimator.service.TaxCalculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ public class HomeController {
     @Autowired
     TaxCalculator taxCalculator;
 
+    @Autowired
+    OffSetCalculator offSetCalculator;
+
     @GetMapping({"/home","/"})
     public String showHomePage(Model model){
         model.addAttribute("taxation",new Taxation());
@@ -26,7 +30,9 @@ public class HomeController {
     @PostMapping("/calculateTax")
     public String calculateTax(@ModelAttribute Taxation taxation,Model model){
 
-        taxation.setTotalTax(taxCalculator.calculateIncomeTax(taxation.getGrossSalaryIncome()));
+        taxation.setTotalTax(taxCalculator.calculateIncomeTax(taxation.getTaxableIncome()));
+        taxation.setLowIncomeTaxOffset(offSetCalculator.lowIncomeTaxOffsetCalculator(taxation.getTaxableIncome()));
+        taxation.setLowAndMiddleIncomeTaxOffset(offSetCalculator.lowAndMiddleTaxOffsetCalculator(taxation.getTaxableIncome()));
 
         model.addAttribute("result",taxation);
 

@@ -9,11 +9,19 @@
 </head>
 <body>
 
+<h1>Welcome to Sulabh's Tax Estimate Page</h1>
+
 <h2>Enter your income details to estimate tax payable and tax returns</h2>
 
 <form action="#" th:action="@{/calculateTax}" th:object="${taxation}" method="post">
     <p></p><label><h4>Gross Salary Income :</h4></label>
     <input type="text" th:field="*{grossSalaryIncome}">
+
+    <p></p><label><h4>Other Income :</h4></label>
+    <input type="text" th:field="*{otherIncome}"> (Interest/Shares/Rent)
+
+    <p></p><label><h4>Total Deductions :</h4></label>
+    <input type="text" th:field="*{totalDeductions}">
 
     <p></p><label><h4>Withheld Amount :</h4></label>
     <input type="text" th:field="*{withheldTax}"><br>

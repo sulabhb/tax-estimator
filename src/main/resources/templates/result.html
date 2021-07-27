@@ -6,10 +6,18 @@
 </head>
 <body>
 
-<h1>Your tax estimate</h1>
+<h1>Your tax estimate by Sulabh</h1>
 
 <p th:text="'Gross Salary Income : ' + ${result.grossSalaryIncome}"></p>
+<p th:text="'Other Income : ' + ${result.getOtherIncome()}"></p>
+<p th:text="'Deductions : ' + ${result.getTotalDeductions()}"></p>
+<p th:text="'Taxable Income : ' + ${result.getTaxableIncome()}"></p>
 <p th:text="'Tax on income : ' + ${result.getTotalTax()}"></p>
+
+<p th:text="'Low Income Tax Offset : ' + ${result.getLowIncomeTaxOffset()}"></p>
+<p th:text="'Low & Middle Income Tax Offset : ' + ${result.getLowAndMiddleIncomeTaxOffset()}"></p>
+
+<h1><p th:text="'Tax Return : ' + ${result.getTaxReturn()}"></p></h1>
 
 </body>
 </html>

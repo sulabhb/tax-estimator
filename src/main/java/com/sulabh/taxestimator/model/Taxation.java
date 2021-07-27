@@ -6,14 +6,54 @@ import org.springframework.stereotype.Component;
 public class Taxation {
 
     private double grossSalaryIncome;
-    //private double otherIncome;
-    //private double totalDeductions;
+    private double otherIncome;
+    private double totalDeductions;
+    private double taxableIncome;
     private double withheldTax;
     //private String isMedicare;
     private double totalTax;
     private double taxReturn;
 
+    private double lowIncomeTaxOffset;
+    private double lowAndMiddleIncomeTaxOffset;
+
     public Taxation() {
+    }
+
+    public double getLowIncomeTaxOffset() {
+        return lowIncomeTaxOffset;
+    }
+
+    public void setLowIncomeTaxOffset(double lowIncomeTaxOffset) {
+        this.lowIncomeTaxOffset = lowIncomeTaxOffset;
+    }
+
+    public double getLowAndMiddleIncomeTaxOffset() {
+        return lowAndMiddleIncomeTaxOffset;
+    }
+
+    public void setLowAndMiddleIncomeTaxOffset(double lowAndMiddleIncomeTaxOffset) {
+        this.lowAndMiddleIncomeTaxOffset = lowAndMiddleIncomeTaxOffset;
+    }
+
+    public double getOtherIncome() {
+        return otherIncome;
+    }
+
+    public void setOtherIncome(double otherIncome) {
+        this.otherIncome = otherIncome;
+    }
+
+    public void setTotalDeductions(double totalDeductions) {
+        this.totalDeductions = totalDeductions;
+    }
+
+    public double getTotalDeductions() {
+        return totalDeductions;
+    }
+
+    public double getTaxableIncome() {
+        return this.grossSalaryIncome + this.otherIncome - this.totalDeductions;
     }
 
     public double getGrossSalaryIncome() {
@@ -41,7 +81,7 @@ public class Taxation {
     }
 
     public double getTaxReturn() {
-        return this.getTotalTax() - this.getWithheldTax();
+        return this.getWithheldTax() - this.totalTax + this.lowIncomeTaxOffset + this.lowAndMiddleIncomeTaxOffset;
     }
 
 }
