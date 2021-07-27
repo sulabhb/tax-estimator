@@ -18,7 +18,7 @@ public class TaxCalculatorImpl implements TaxCalculator {
         }else if (taxableIncome > 180000){
             return ((taxableIncome - 180000) * .45) + 51667;
         }else{
-            return -1;
+            return 0;
         }
     }
 }

@@ -9,26 +9,38 @@
 </head>
 <body>
 
-<h1>Welcome to Sulabh's Tax Estimate Page</h1>
+<div class="container">
+    <h1 class="row" align="center">Welcome to Sulabh's Tax Estimation</h1><br>
 
-<h2>Enter your income details to estimate tax payable and tax returns</h2>
+    <h4>Enter your income details to estimate tax payable and tax returns</h4>
+    <hr>
 
-<form action="#" th:action="@{/calculateTax}" th:object="${taxation}" method="post">
-    <p></p><label><h4>Gross Salary Income :</h4></label>
-    <input type="text" th:field="*{grossSalaryIncome}">
+    <form action="#" th:action="@{/calculateTax}" th:object="${taxation}" method="post">
+        <div class="form-group">
+            <label>Gross Salary Income</label>
+            <input type="text" th:field="*{grossSalaryIncome}" class="form-control" placeholder="Enter total salary">
+        </div>
 
-    <p></p><label><h4>Other Income :</h4></label>
-    <input type="text" th:field="*{otherIncome}"> (Interest/Shares/Rent)
+        <div class="form-group">
+            <label>Other Income</label>
+            <input type="text" th:field="*{otherIncome}" class="form-control" placeholder="Enter additional income">
+            <small class="form-text text-muted">Other income like interest, rent, capital gain and so on</small>
+        </div>
 
-    <p></p><label><h4>Total Deductions :</h4></label>
-    <input type="text" th:field="*{totalDeductions}">
+        <div class="form-group">
+            <label>Total Deductions</label>
+            <input type="text" th:field="*{totalDeductions}" class="form-control" placeholder="Enter eligible deduction">
+            <small class="form-text text-muted">Eligible deductions like work from home, uniform, expenses and so on.</small>
+        </div>
 
-    <p></p><label><h4>Withheld Amount :</h4></label>
-    <input type="text" th:field="*{withheldTax}"><br>
+        <div class="form-group">
+            <label>Withheld Amount</label>
+            <input type="text" th:field="*{withheldTax}" class="form-control" placeholder="Enter tax withheld by employer">
+        </div>
 
-    <p><input type="submit" value="Calculate"></p>
-
-</form>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+    </form>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
