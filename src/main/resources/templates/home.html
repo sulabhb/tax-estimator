@@ -10,10 +10,17 @@
 <body>
 
 <div class="container">
-    <h1 class="row" align="center">Welcome to Sulabh's Tax Estimation</h1><br>
 
+    <div class="row col-xs-10 col-md-8 ">
+        <h1>Welcome to Sulabh's Tax Estimation</h1><hr>
+    </div>
+
+    <div class="row col-xs-10 col-md-8 ">
     <h4>Enter your income details to estimate tax payable and tax returns</h4>
+    </div>
     <hr>
+
+    <div class="col-xs-6 col-md-4">
 
     <form action="#" th:action="@{/calculateTax}" th:object="${taxation}" method="post">
         <div class="form-group">
@@ -40,6 +47,8 @@
 
         <button type="submit" class="btn btn-primary">Calculate</button>
     </form>
+
+    </div>
 </div>
 
 
